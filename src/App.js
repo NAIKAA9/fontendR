@@ -1,20 +1,26 @@
-import React, { createContext } from "react";
-import Parent from "./parent";
-import Child from "./Child";
-
-export const nameContext = createContext();
+import React from "react";
+import Home from "./Home";
+import About from "./About";
+import Contact from "./Contact";
+import User from "./User";
+import { BrowserRouter, Routes, Route } from "react-router-dom";
+import NotFound from "./NotFound";
+import Users from "./Users";
+import Navbar from "./Navbar";
 
 const App = () => {
-  const name = "kittu";
-  const fav = "chocolate"; // define fav here
-
   return (
-    <nameContext.Provider value={{ name, fav }}>
-      <div>
-        <Parent />
-        <Child />
-      </div>
-    </nameContext.Provider>
+    <BrowserRouter>
+      <Routes>
+        <Route path="/" element={<Home />} />
+        <Route path="/about" element={<About />} />
+        <Route path="/contact" element={<Contact />} />
+        <Route path="/user" element={<User />} />
+        <Route path="*" element={<NotFound />} />
+        <Route path="/users/:username" element={<Users />} />
+        <Route path="/n" element={<Navbar />} />
+      </Routes>
+    </BrowserRouter>
   );
 };
 
